@@ -1,0 +1,37 @@
+= form_for @person do |f|
+  - if @person.errors.any?
+    .card
+      .card-header.card-danger = "#{pluralize(@person.errors.count, "error")} prohibited this person from being saved:"
+      .card-block
+        ul
+          - @person.errors.full_messages.each do |message|
+            li = message
+
+
+  .row
+    .form-group.col-md-4
+      = f.label :first_name
+      = f.text_field :first_name, class: 'form-control'
+    .form-group.col-md-4
+      = f.label :last_name
+      = f.text_field :last_name, class: 'form-control'
+    .form-group.col-md-4
+      = f.label :email
+      = f.text_field :email, class: 'form-control'
+    .form-group.col-md-4
+      = f.label :job
+      = f.text_field :job, class: 'form-control'
+
+    .form-group.col-md-4
+      = f.label :picture
+      = f.text_field :picture, class: 'form-control'
+    .form-group.col-md-4
+      = f.label :gender
+      = f.text_field :gender, class: 'form-control'
+    .form-group.col-md-4
+      = f.label :birthdate
+      = f.date_select :birthdate, class: 'form-control'
+    .form-group.col-md-12
+      = f.label :bio
+      = f.text_area :bio, class: 'form-control'
+    .form-group.col-md-12 = f.submit 'Create Person', class: 'btn btn-primary'

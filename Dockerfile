@@ -5,6 +5,8 @@ RUN apt-get update -qq && apt-get install -y build-essential nodejs  mysql-clien
  
 # Define where our application will live inside the image
 ENV RAILS_ROOT /var/www/programming_test
+
+run gem install foreman
  
 # Create application home. App server will need the pids dir so just create everything in one shot
 RUN mkdir -p $RAILS_ROOT/tmp/pids
@@ -30,4 +32,4 @@ COPY . .
  
 # Define the script we want run once the container boots
 # Use the "exec" form of CMD so our script shuts down gracefully on SIGTERM (i.e. `docker stop`)
-CMD [ "rails", "server", "-b", "0.0.0.0"]
+CMD [ "foreman", "start"]

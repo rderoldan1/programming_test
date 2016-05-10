@@ -1,0 +1,21 @@
+h1 Listing people
+
+table.table.table.striped.table-hover
+  thead.thead-default
+    tr
+      th First name & Last name
+      th Email
+      th Age
+      th
+
+  tbody
+    - @people.each do |person|
+      tr
+        td = link_to person.full_name, person
+        td = person.email
+        td.text-md-right = person.age
+        td = link_to 'Destroy', person, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger btn-sm'
+
+br
+
+= link_to 'New Person', new_person_path, class: 'btn btn-primary'

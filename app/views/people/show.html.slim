@@ -1,0 +1,34 @@
+p#notice = notice
+.row
+  .col-md-2
+    = image_tag 'user', class: 'img-fluid img-rounded'
+    br
+    = link_to 'Cancel', people_path, class: 'btn btn-danger-outline '
+  .col-md-4
+    .card
+      .card-block
+        h4.card-title
+          = @person.full_name.titleize
+        p.card-text
+          = @person.bio
+        small.card-text
+          |Member since
+          = " #{distance_of_time_in_words_to_now(@person.created_at)}"
+      ul.list-group.list-group-flush
+        li.list-group-item
+          strong Email:
+          = @person.email
+        li.list-group-item
+          strong Job:
+          = @person.job
+        li.list-group-item
+          strong Gender:
+          = @person.gender
+        li.list-group-item
+          strong Birthdate:
+          = t(@person.birthdate)
+      .card-block
+        = link_to 'Edit', edit_person_path(@person), class: 'btn btn-primary-outline'
+        = link_to 'Destroy', @person, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'btn btn-danger-outline pull-md-right'
+
+
