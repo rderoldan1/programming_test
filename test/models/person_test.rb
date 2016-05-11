@@ -18,7 +18,38 @@
 require 'test_helper'
 
 class PersonTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+   setup do
+      @person = people(:one)
+   end
+
+   test "invalid without first name" do
+      @person.first_name = nil
+      assert @person.valid? == false
+      assert_includes @person.errors.messages.keys, :first
+      assert_includes @person.errors.messages.values, "can\'t be blank"
+   end
+
+   test "invalid without last name" do
+      @person.last_name = nil
+      assert @person.valid? == false
+      assert_includes @person.errors.messages.keys, :last_name
+      assert_includes @person.errors.messages.values, "can\'t be blank"
+
+   end
+
+   test "invalid without email" do
+      @person.last_name = nil
+      assert @person.valid? == false
+      assert_includes @person.errors.messages.keys, :email
+      assert_includes @person.errors.messages.values, "can\'t be blank"
+   end
+
+   test "#full_name" do
+      assert @person.full_name == "Ruben Espinosa"
+   end
+
+   test "#age" do
+      @person.birthdate = Date.today - 25.years
+      assert @person.age == 25, "Age must be equal to 26"
+   end
 end
