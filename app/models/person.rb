@@ -21,7 +21,7 @@ class Person < ApplicationRecord
   EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :first_name, presence: true, length: 1..75
-  validates :first_name, presence: true, length: 1..75
+  validates :last_name, presence: true, length: 1..75
   validates :email, presence: true, length: 1..254, uniqueness: true, format: { with: EMAIL_REGEX }
   validates :bio, allow_blank: true, length: { minimum: 10 }
   validates :job, allow_blank: true, length: { maximum: 75 }
