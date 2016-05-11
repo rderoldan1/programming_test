@@ -11,7 +11,12 @@ ruby 2.2.3 + rails 5
 * System dependencies
 
 This guide assume that you have installed docker for easy dev environment 
-setup
+setup, if you don't like to go with docker, you must have: 
+
+   * MySQL
+   * Redis
+   * Ruby
+   * Rails
 
 * Configuration
 
@@ -40,4 +45,13 @@ bundle the gemfile and start sidekiq and puma
   
     $ docker-compose up
 
- Now you can access to your docker ip and port 3000, in my case, http://localhost:3000   
+Now you can access to your docker ip and port 3000, in my case, http://localhost:3000
+
+* Feature
+    
+When a user is created/deleted, the system will send an email to all people, 
+in dev mode, all mails are stored in letter opener, if you like to check all 
+sent mails, go to http://localhost:3000/letter_opener
+ 
+    
+    
