@@ -1,7 +1,7 @@
 p#notice = notice
 .row
   .col-md-2
-    = image_tag 'user', class: 'img-fluid img-rounded'
+    = image_tag @person.picture, class: 'img-fluid img-rounded'
     br
     = link_to 'Cancel', people_path, class: 'btn btn-danger-outline '
   .col-md-4
